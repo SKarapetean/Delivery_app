@@ -2,14 +2,16 @@
 
 namespace App\Providers;
 
-use App\Services\Repository\Read\UserReadRepository;
-use App\Services\Repository\Read\UserReadRepositoryInterface;
+use App\Services\Repository\Read\Product\ProductReadRepository;
+use App\Services\Repository\Read\Product\ProductReadRepositoryInterface;
+use App\Services\Repository\Read\User\UserReadRepository;
+use App\Services\Repository\Read\User\UserReadRepositoryInterface;
 use App\Services\Repository\Write\FIle\FileWriteRepository;
 use App\Services\Repository\Write\FIle\FileWriteRepositoryInterface;
 use App\Services\Repository\Write\Product\ProductWriteRepository;
 use App\Services\Repository\Write\Product\ProductWriteRepositoryInterface;
-use App\Services\Repository\Write\UserWriteRepository;
-use App\Services\Repository\Write\UserWriteRepositoryInterface;
+use App\Services\Repository\Write\User\UserWriteRepository;
+use App\Services\Repository\Write\User\UserWriteRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -37,6 +39,11 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             ProductWriteRepositoryInterface::class,
             ProductWriteRepository::class
+        );
+
+        $this->app->bind(
+            ProductReadRepositoryInterface::class,
+            ProductReadRepository::class
         );
     }
 

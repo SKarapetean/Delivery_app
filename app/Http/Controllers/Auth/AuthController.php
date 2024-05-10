@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\DTO\UserRegisterDTO;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UserRegisterRequest;
-use App\Services\Actions\UserRegisterAction;
+use App\Http\Requests\User\UserRegisterRequest;
+use App\Services\Actions\User\UserRegisterAction;
 
 class AuthController extends Controller
 {

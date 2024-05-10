@@ -24,7 +24,7 @@ class AddProductAction
               'name'=> $dto->productName,
               'description' => $dto->description,
               'price' => $dto->price,
-              'image' => $fileId
+              'image_id' => $fileId
             ];
             return $this->productWriteRepository->create($data);
         }

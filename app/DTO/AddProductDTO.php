@@ -2,7 +2,7 @@
 
 namespace App\DTO;
 
-use App\Http\Requests\AddProductRequest;
+use App\Http\Requests\Product\AddProductRequest;
 use Illuminate\Http\UploadedFile;
 
 class AddProductDTO

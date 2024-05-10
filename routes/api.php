@@ -23,7 +23,8 @@ Route::prefix('/user')->group(function () {
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/register', [AuthController::class, 'register']);
     Route::prefix('/product')->group(function () {
-        Route::post('', [ProductController::class, 'add']);
+        Route::post('/', [ProductController::class, 'add']);
         //Route::get('/{id}', [ProductController::class, 'get']);
+        Route::get('/', [ProductController::class, 'index']);
     });
 });

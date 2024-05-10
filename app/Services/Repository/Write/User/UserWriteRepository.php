@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Repository\Write;
+namespace App\Services\Repository\Write\User;
 
 use App\DTO\UserRegisterDTO;
 use App\Models\User;

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Services\Actions;
+namespace App\Services\Actions\User;
 
 use App\DTO\UserRegisterDTO;
-use App\Services\Repository\Read\UserReadRepositoryInterface;
-use App\Services\Repository\Write\UserWriteRepositoryInterface;
+use App\Services\Repository\Read\User\UserReadRepositoryInterface;
+use App\Services\Repository\Write\User\UserWriteRepositoryInterface;
 
 class UserRegisterAction
 {

@@ -16,7 +16,8 @@ class FIleService
     {
         $path = Storage::putFile('public/Files', $image);
         if ($path) {
-            return $this->writeRepository->add($path);
+            $fileUrl = Storage::url($path);
+            return $this->writeRepository->add($fileUrl);
         }
 
         return -1;

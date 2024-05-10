@@ -2,7 +2,7 @@
 
 namespace App\DTO;
 
-use App\Http\Requests\UserRegisterRequest;
+use App\Http\Requests\User\UserRegisterRequest;
 use Carbon\Carbon;
 
 class UserRegisterDTO
