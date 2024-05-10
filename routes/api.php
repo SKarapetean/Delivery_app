@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Products\ProductController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,7 +19,11 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('/user')->group(function () {
     Route::post('/auth', [UserController::class, 'authWithCode']);
 });
+
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/register', [AuthController::class, 'register']);
-
+    Route::prefix('/product')->group(function () {
+        Route::post('', [ProductController::class, 'add']);
+        //Route::get('/{id}', [ProductController::class, 'get']);
+    });
 });
