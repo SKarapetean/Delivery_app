@@ -20,9 +20,8 @@ class Handler extends ExceptionHandler
     ];
 
 
-    public function render($request, Throwable $e)
+    public function render($request, Throwable $e): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|Response
     {
-        dd($e);
         $httpCode = Response::HTTP_INTERNAL_SERVER_ERROR;
         $statusCode =  $e->getCode();
         $details = [

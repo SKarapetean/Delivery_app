@@ -8,13 +8,15 @@ use Illuminate\Support\Facades\Storage;
 
 class FIleService
 {
+    private const PATH = 'public/Files';
+
     public function __construct(public FileWriteRepositoryInterface $writeRepository)
     {
     }
 
     public function addFile(UploadedFile $image): int
     {
-        $path = Storage::putFile('public/Files', $image);
+        $path = Storage::putFile(self::PATH, $image);
         if ($path) {
             $fileUrl = Storage::url($path);
             return $this->writeRepository->add($fileUrl);
@@ -22,4 +24,15 @@ class FIleService
 
         return -1;
     }
+
+    public function delete(int $fileId): void
+    {
+        $file = $this->writeRepository->getFileById($fileId);
+        if ($file) {
+            $path = str_replace('storage', 'public', $file->path);
+            Storage::delete($path);
+            $this->writeRepository->deleteFileById($fileId);
+        }
+    }
+
 }

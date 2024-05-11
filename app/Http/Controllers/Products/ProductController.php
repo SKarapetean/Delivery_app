@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\Products;
 
 use App\DTO\AddProductDTO;
+use App\Exceptions\ProductNotFoundException;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Product\AddProductRequest;
 use App\Http\Requests\Product\IndexProductRequest;
 use App\Http\Resources\Product\ProductResource;
 use App\Http\Resources\Product\ProductWithDescriptionResource;
 use App\Services\Actions\Product\AddProductAction;
+use App\Services\Actions\Product\DeleteProductAction;
 use App\Services\Actions\Product\IndexProductAction;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
@@ -44,7 +46,18 @@ class ProductController extends Controller
 
     public function edit() {}
 
-    public function remove() {}
+    /**
+     * @throws ProductNotFoundException
+     */
+    public function delete(Request $request, DeleteProductAction $action): JsonResponse
+    {
+        $productId = $request->route('id');
+        $action->run($productId);
+
+        return response()->json([
+                'message' => 'Product deleted successfully'
+        ]);
+    }
 
     public function get(Request $request)
     {
