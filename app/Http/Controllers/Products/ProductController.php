@@ -69,4 +69,15 @@ class ProductController extends Controller
         $product = $action->run($productId);
         return new ProductWithDescriptionResource($product);
     }
+
+    /**
+     * @throws ProductNotFoundException
+     */
+    public function update(UpdateProductRequest $request, UpdateProductAction $action): ProductWithDescriptionResource
+    {
+        $productId = $request->route('id');
+        $dto = UpdateProductDTO::fromRequest($request);
+        $product = $action->run($productId, $dto);
+        return new ProductWithDescriptionResource($product);
+    }
 }
