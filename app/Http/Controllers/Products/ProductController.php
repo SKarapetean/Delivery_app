@@ -11,6 +11,7 @@ use App\Http\Resources\Product\ProductResource;
 use App\Http\Resources\Product\ProductWithDescriptionResource;
 use App\Services\Actions\Product\AddProductAction;
 use App\Services\Actions\Product\DeleteProductAction;
+use App\Services\Actions\Product\GetProductAction;
 use App\Services\Actions\Product\IndexProductAction;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
@@ -59,8 +60,13 @@ class ProductController extends Controller
         ]);
     }
 
-    public function get(Request $request)
+    /**
+     * @throws ProductNotFoundException
+     */
+    public function get(Request $request, GetProductAction $action): ProductWithDescriptionResource
     {
-        $request->route('id');
+        $productId = $request->route('id');
+        $product = $action->run($productId);
+        return new ProductWithDescriptionResource($product);
     }
 }

@@ -4,6 +4,7 @@ namespace App\Services\Actions\Product;
 
 use App\Exceptions\ProductNotFoundException;
 use App\Services\FileService\FIleService;
+use App\Services\Repository\Read\Product\ProductReadRepositoryInterface;
 use App\Services\Repository\Write\Product\ProductWriteRepositoryInterface;
 
 class DeleteProductAction
@@ -11,7 +12,8 @@ class DeleteProductAction
 
     public function __construct(
         public FIleService $fileService,
-        public ProductWriteRepositoryInterface $writeRepository
+        public ProductWriteRepositoryInterface $writeRepository,
+        public ProductReadRepositoryInterface $readRepository
     )
     {
     }
@@ -21,7 +23,7 @@ class DeleteProductAction
      */
     public function run(int $productId): void
     {
-        $product = $this->writeRepository->getProductById($productId);
+        $product = $this->readRepository->getProductById($productId);
         if (!$product) {
             throw new ProductNotFoundException('No product with the given id.', 404);
         }

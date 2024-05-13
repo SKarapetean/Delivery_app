@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Services\Repository\Read\File\FileReadRepository;
+use App\Services\Repository\Read\File\FileReadRepositoryInterface;
 use App\Services\Repository\Read\Product\ProductReadRepository;
 use App\Services\Repository\Read\Product\ProductReadRepositoryInterface;
 use App\Services\Repository\Read\User\UserReadRepository;
@@ -44,6 +46,11 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             ProductReadRepositoryInterface::class,
             ProductReadRepository::class
+        );
+
+        $this->app->bind(
+            FileReadRepositoryInterface::class,
+            FileReadRepository::class
         );
     }
 

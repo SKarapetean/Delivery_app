@@ -19,11 +19,6 @@ class FileWriteRepository implements FileWriteRepositoryInterface
         return $this->query()->insertGetId(['path' => $path, 'created_at' => $now, 'updated_at' => $now]);
     }
 
-    public function getFileById(int $fileId): ?object
-    {
-        return $this->query()->where('id', $fileId)->first();
-    }
-
     public function deleteFileById(int $fileId): void
     {
         $this->query()->where('id', $fileId)->delete();

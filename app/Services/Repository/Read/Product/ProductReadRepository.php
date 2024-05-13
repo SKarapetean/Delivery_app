@@ -17,4 +17,9 @@ class ProductReadRepository implements ProductReadRepositoryInterface
     {
         return $this->query()->paginate(perPage: $perPage, page: $page);
     }
+
+    public function getProductById(int $productId): ?object
+    {
+        return $this->query()->where('id', $productId)->first();
+    }
 }

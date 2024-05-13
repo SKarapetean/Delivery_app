@@ -2,6 +2,7 @@
 
 namespace App\Services\FileService;
 
+use App\Services\Repository\Read\FIle\FileReadRepositoryInterface;
 use App\Services\Repository\Write\FIle\FileWriteRepositoryInterface;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
@@ -10,7 +11,9 @@ class FIleService
 {
     private const PATH = 'public/Files';
 
-    public function __construct(public FileWriteRepositoryInterface $writeRepository)
+    public function __construct(
+        public FileWriteRepositoryInterface $writeRepository,
+        public FileReadRepositoryInterface $readRepository)
     {
     }
 
@@ -27,7 +30,7 @@ class FIleService
 
     public function delete(int $fileId): void
     {
-        $file = $this->writeRepository->getFileById($fileId);
+        $file = $this->readRepository->getFileById($fileId);
         if ($file) {
             $path = str_replace('storage', 'public', $file->path);
             Storage::delete($path);

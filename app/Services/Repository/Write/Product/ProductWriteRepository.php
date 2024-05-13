@@ -18,11 +18,6 @@ class ProductWriteRepository implements ProductWriteRepositoryInterface
         return $this->query()->create($data);
     }
 
-    public function getProductById(int $productId): ?object
-    {
-        return $this->query()->where('id', $productId)->first();
-    }
-
     public function deleteProductById(int $productId): void
     {
         $this->query()->where('id', $productId)->delete();
