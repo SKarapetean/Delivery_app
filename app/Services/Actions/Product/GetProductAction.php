@@ -2,6 +2,7 @@
 
 namespace App\Services\Actions\Product;
 
+use App\Models\Product;
 use App\Exceptions\ProductNotFoundException;
 use App\Services\Repository\Read\Product\ProductReadRepositoryInterface;
 
@@ -16,7 +17,7 @@ class GetProductAction
     /**
      * @throws ProductNotFoundException
      */
-    public function run(int $productId): ?object
+    public function run(int $productId): object
     {
         $product = $this->productReadRepository->getProductById($productId);
         if (!$product) {

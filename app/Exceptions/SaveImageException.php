@@ -2,14 +2,14 @@
 
 namespace App\Exceptions;
 
-class ProductNotFoundException extends ApiException
+class SaveImageException extends ApiException
 {
 
-    protected $code = 604;
+    protected $code = 608;
     public function __construct($message = null, $code = null)
     {
         parent::__construct($message, $code);
-        $this->message = $message ?? 'Product not found';
+        $this->message = $message ?? 'Could not save image';
         $this->httpStatusCode = $code ?? 500;
     }
 
