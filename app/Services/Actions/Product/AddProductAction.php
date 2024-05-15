@@ -2,20 +2,21 @@
 
 namespace App\Services\Actions\Product;
 
+use App\Models\Product;
 use App\DTO\AddProductDTO;
-use App\Services\FileService\FIleService;
+use App\Services\FileService\FileService;
 use App\Services\Repository\Write\Product\ProductWriteRepositoryInterface;
 
 class AddProductAction
 {
     public function __construct(
         public ProductWriteRepositoryInterface $productWriteRepository,
-        public FIleService $fIleService
+        public FileService $fIleService
     )
     {
     }
 
-    public function run(AddProductDTO $dto)
+    public function run(AddProductDTO $dto): ?Product
     {
         $fileId = $this->fIleService->addFile($dto->image);
 

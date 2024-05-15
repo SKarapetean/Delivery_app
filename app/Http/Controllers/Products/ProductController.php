@@ -3,16 +3,20 @@
 namespace App\Http\Controllers\Products;
 
 use App\DTO\AddProductDTO;
+use App\DTO\UpdateProductDTO;
 use App\Exceptions\ProductNotFoundException;
+use App\Exceptions\SaveImageException;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Product\AddProductRequest;
 use App\Http\Requests\Product\IndexProductRequest;
+use App\Http\Requests\Product\UpdateProductRequest;
 use App\Http\Resources\Product\ProductResource;
 use App\Http\Resources\Product\ProductWithDescriptionResource;
 use App\Services\Actions\Product\AddProductAction;
 use App\Services\Actions\Product\DeleteProductAction;
 use App\Services\Actions\Product\GetProductAction;
 use App\Services\Actions\Product\IndexProductAction;
+use App\Services\Actions\Product\UpdateProductAction;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
@@ -72,6 +76,7 @@ class ProductController extends Controller
 
     /**
      * @throws ProductNotFoundException
+     * @throws SaveImageException
      */
     public function update(UpdateProductRequest $request, UpdateProductAction $action): ProductWithDescriptionResource
     {

@@ -23,12 +23,13 @@ class ProductWriteRepository implements ProductWriteRepositoryInterface
     {
         $this->query()->where('id', $productId)->delete();
     }
- 
-    public function updateProduct(Product $product, UpdateProductDTO $dto): void
+
+    public function updateProduct(object $product, UpdateProductDTO $dto): void
     {
         $product->name = $dto->productName;
         $product->price = $dto->price;
-        $product->description = $dto->description; 
+        $product->description = $dto->description;
+        $product->image_id = $dto->imageId;
         $product->save();
     }
 

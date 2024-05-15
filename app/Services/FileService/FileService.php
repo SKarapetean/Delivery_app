@@ -7,7 +7,7 @@ use App\Services\Repository\Write\FIle\FileWriteRepositoryInterface;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 
-class FIleService
+class FileService
 {
     private const PATH = 'public/Files';
 

@@ -18,6 +18,7 @@ class UpdateProductRequest extends FormRequest
     private const PRODUCT = 'product';
     private const PRICE = 'price';
     private const DESCRIPTION = 'description';
+    private const IMAGE = 'image';
 
     /**
      * Get the validation rules that apply to the request.
@@ -30,6 +31,7 @@ class UpdateProductRequest extends FormRequest
             self::PRODUCT => 'required|string',
             self::DESCRIPTION => 'required|string',
             self::PRICE => 'required|numeric',
+            self::IMAGE => 'required|image'
         ];
     }
 
@@ -46,6 +48,11 @@ class UpdateProductRequest extends FormRequest
     public function getProductDescription()
     {
         return $this->get(self::DESCRIPTION);
+    }
+
+    public function getProductImage(): array|\Illuminate\Http\UploadedFile
+    {
+        return $this->file(self::IMAGE);
     }
 
 }
