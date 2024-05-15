@@ -11,14 +11,14 @@ class AddProductAction
 {
     public function __construct(
         public ProductWriteRepositoryInterface $productWriteRepository,
-        public FileService $fIleService
+        public FileService $fileService
     )
     {
     }
 
     public function run(AddProductDTO $dto): ?Product
     {
-        $fileId = $this->fIleService->addFile($dto->image);
+        $fileId = $this->fileService->addFile($dto->image);
 
         if ($fileId != -1) {
             $data = [

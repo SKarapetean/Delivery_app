@@ -2,8 +2,8 @@
 
 namespace App\Services\FileService;
 
-use App\Services\Repository\Read\FIle\FileReadRepositoryInterface;
-use App\Services\Repository\Write\FIle\FileWriteRepositoryInterface;
+use App\Services\Repository\Read\File\FileReadRepositoryInterface;
+use App\Services\Repository\Write\File\FileWriteRepositoryInterface;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 

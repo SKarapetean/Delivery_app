@@ -8,8 +8,10 @@ use App\Services\Repository\Read\Product\ProductReadRepository;
 use App\Services\Repository\Read\Product\ProductReadRepositoryInterface;
 use App\Services\Repository\Read\User\UserReadRepository;
 use App\Services\Repository\Read\User\UserReadRepositoryInterface;
-use App\Services\Repository\Write\FIle\FileWriteRepository;
-use App\Services\Repository\Write\FIle\FileWriteRepositoryInterface;
+use App\Services\Repository\Write\File\FileWriteRepository;
+use App\Services\Repository\Write\File\FileWriteRepositoryInterface;
+use App\Services\Repository\Write\Order\OrderWriteRepository;
+use App\Services\Repository\Write\Order\OrderWriteRepositoryInterface;
 use App\Services\Repository\Write\Product\ProductWriteRepository;
 use App\Services\Repository\Write\Product\ProductWriteRepositoryInterface;
 use App\Services\Repository\Write\User\UserWriteRepository;
@@ -51,6 +53,11 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             FileReadRepositoryInterface::class,
             FileReadRepository::class
+        );
+
+        $this->app->bind(
+            OrderWriteRepositoryInterface::class,
+            OrderWriteRepository::class
         );
     }
 

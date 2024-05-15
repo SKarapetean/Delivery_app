@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Repository\Write\FIle;
+namespace App\Services\Repository\Write\File;
 
 interface FileWriteRepositoryInterface
 {
