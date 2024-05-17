@@ -26,9 +26,10 @@ class ProductController extends Controller
 
     public function index(IndexProductRequest $request, IndexProductAction $action): AnonymousResourceCollection
     {
+        $searchItem = $request->route('search');
         $page = $request->getPage();
         $perPage = $request->getPerPage();
-        $products = $action->run($page, $perPage);
+        $products = $action->run($page, $perPage, $searchItem);
         return ProductResource::collection($products);
     }
 
@@ -48,8 +49,6 @@ class ProductController extends Controller
         );
 
     }
-
-    public function edit() {}
 
     /**
      * @throws ProductNotFoundException

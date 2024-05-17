@@ -22,4 +22,16 @@ class ProductReadRepository implements ProductReadRepositoryInterface
     {
         return $this->query()->where('id', $productId)->first();
     }
+
+    public function getProductsByName(?int $page, ?int $perPage, string $searchItem): LengthAwarePaginator 
+    {
+        return $this->query()->where('name', $searchItem)->paginate(perPage: $perPage, page: $page);
+    }
+    
+    // public function getProductsByCode(?int $page, ?int $perPage, string $searchItem): LengthAwarePaginator
+    // {
+    //     return $this->query()->where('code', $searchItem)->paginate(perPage: $perPage, page: $page);
+    // }
+
+
 }

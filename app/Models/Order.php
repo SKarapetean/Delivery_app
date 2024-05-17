@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enum\Order\Status;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -15,6 +16,10 @@ class Order extends Model
           'user_id',
           'status'
         ];
+    
+    protected $casts = [
+        'status' => Status::class,
+    ];
 
     public function products(): BelongsToMany
     {

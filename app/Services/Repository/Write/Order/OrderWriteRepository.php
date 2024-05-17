@@ -25,4 +25,9 @@ class OrderWriteRepository implements OrderWriteRepositoryInterface
             ]
         );
     }
+
+    public function deleteOrderById(int $orderId): void
+    {
+        $this->query()->where('id', $orderId)->delete();
+    }
 }
